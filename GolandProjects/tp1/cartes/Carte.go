@@ -1,4 +1,4 @@
-package main
+package cartes
 
 import "fmt"
 
@@ -39,7 +39,7 @@ func NouvelleCarte(couleur Couleur, rang byte) (Carte, error) {
 func (c Carte) Rang() byte       { return byte(c) & 0x0F }
 func (c Carte) Couleur() Couleur { return Couleur(byte(c) >> 4 & 0x07) }
 
-func (c Carte) toString() (string, error) {
+func (c Carte) ToString() (string, error) {
 	switch c.Couleur() {
 	case JokerCouleur:
 		return "JOKER", nil
@@ -56,7 +56,7 @@ func (c Carte) toString() (string, error) {
 }
 
 func (c Carte) String() string {
-	s, err := c.toString()
+	s, err := c.ToString()
 	if err != nil {
 		return "?"
 	}
